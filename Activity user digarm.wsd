@@ -1,5 +1,5 @@
 @startuml
-start
+:start;
 
 :Open Flipkart App/Website;
 
@@ -112,6 +112,6 @@ endif
 if (Yes) then
   :Show Personalized Offers;
 endif
-
+:end;
 stop
 @enduml
