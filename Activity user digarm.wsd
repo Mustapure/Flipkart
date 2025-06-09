@@ -1,0 +1,117 @@
+@startuml
+start
+
+:Open Flipkart App/Website;
+
+if (Already Registered?) then (Yes)
+  :Enter Email & Password;
+
+  if (Valid Credentials?) then (Yes)
+    :Login Successful;
+  else (No)
+    :Show Login Error;
+    
+    if (Forgot Password?) then (Yes)
+      :Click on 'Forgot Password';
+      :Enter Registered Email;
+      :Send OTP to Email;
+      :Enter OTP;
+      :Reset Password via Direct Link;
+      :Password Reset Successful;
+    else (No)
+      stop
+    endif
+
+  endif
+
+else (No)
+  :Click on Register;
+  :Enter Name, Email, Phone, Password;
+  :Submit Registration;
+  :Registration Success;
+endif
+
+:Browse Categories or Search?;
+
+if (User chooses Browse?) then (Browse)
+  :Show Categories;
+  :Select Category;
+  :Display Products;
+else (Search)
+  :Enter Search Query;
+  :Show Results;
+endif
+
+:Apply Filters and Sorting (optional);
+:Click on a Product;
+
+:View Product Details;
+if (Interested?) then (Yes)
+  :Add to Cart or Wishlist?;
+
+  if (Add to Wishlist?) then (Yes)
+    :Add to Wishlist;
+  else (Add to Cart)
+    :Add Item to Cart;
+    :Choose Quantity;
+  endif
+
+  if (Checkout Now?) then (Yes)
+    :Apply Coupons/Promo (Optional);
+    :Select Address;
+    :Choose Payment Method;
+
+    if (Payment Method?) then
+      --> "UPI" :UPI Flow;
+      --> "Card" :Card Payment Flow;
+      --> "COD" :Order Placed;
+      --> "Wallet/EMI" :Redirect to Gateway;
+    endif
+
+    :Order Placed Successfully;
+    :Send Confirmation Notification;
+  else (No)
+    :Continue Shopping;
+  endif
+
+else (Not Interested)
+  :Go Back to Product List;
+endif
+
+:Track Order?;
+if (Yes) then
+  :Show Order Status;
+endif
+
+:Cancel/Return Request?;
+if (Yes) then
+  if (Eligible?) then
+    :Request Processed;
+  else
+    :Show Policy Restriction;
+  endif
+endif
+
+:Rate & Review Product?;
+if (Yes) then
+  :Submit Review;
+endif
+
+:Contact Support?;
+if (Yes) then
+  :Open Help Center;
+  :Start Chat or Raise Ticket;
+endif
+
+:Manage Profile & Addresses?;
+if (Yes) then
+  :Update Info;
+endif
+
+:View Offers/Notifications?;
+if (Yes) then
+  :Show Personalized Offers;
+endif
+
+stop
+@enduml
